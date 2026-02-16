@@ -15,7 +15,7 @@ const appState = {
 };
 
 // URL de tu Google Apps Script (la configuraremos después)
-const SCRIPT_URL = '1IbncsR70NgoAF2o1b6Smrfi_xuR_z1cevJDV2VMl-fM';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxJhpp1FbCkZ_aPV9RJcUgCi5avq7hdqnf9or3qWiZuxZ0OJ98MXPJb5maTRhp28iWOFw/exec';
 
 // Navegación entre pantallas
 function goToScreen(screenId) {
