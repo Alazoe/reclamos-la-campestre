@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#8B4513">
+    <title>Reclamos - Huevos La Campestre</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <!-- Pantalla 1: Bienvenida -->
+    <div id="screen-welcome" class="screen active">
+        <div class="header">
+            <div class="logo-container">
+                <h1>🥚 Huevos La Campestre</h1>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h2>¿Tienes algún problema con tu compra?</h2>
+            <p class="subtitle">Queremos escucharte y resolver tu inquietud de la mejor manera.</p>
+            
+            <div class="welcome-info">
+                <p>Este formulario te tomará menos de 2 minutos y te responderemos a la brevedad.</p>
+            </div>
+            
+            <button class="btn-primary" onclick="goToScreen('screen-egg-type')">Iniciar reclamo</button>
+        </div>
+    </div>
+
+    <!-- Pantalla 2: Tipo de Huevo -->
+    <div id="screen-egg-type" class="screen">
+        <div class="header">
+            <button class="btn-back" onclick="goToScreen('screen-welcome')">← Volver</button>
+            <h2>Selecciona el calibre del huevo</h2>
+            <div class="progress-bar">
+                <div class="progress" style="width: 16%"></div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="egg-types">
+                <div class="egg-card" onclick="selectEggType('S')">
+                    <div class="egg-icon">🥚</div>
+                    <h3>S - Pequeño</h3>
+                    <p>47 a 53 gramos</p>
+                </div>
+                
+                <div class="egg-card" onclick="selectEggType('M')">
+                    <div class="egg-icon" style="font-size: 3rem;">🥚</div>
+                    <h3>M - Mediano</h3>
+                    <p>54 a 60 gramos</p>
+                </div>
+                
+                <div class="egg-card" onclick="selectEggType('L')">
+                    <div class="egg-icon" style="font-size: 3.5rem;">🥚</div>
+                    <h3>L - Grande</h3>
+                    <p>61 a 68 gramos</p>
+                </div>
+                
+                <div class="egg-card" onclick="selectEggType('XL')">
+                    <div class="egg-icon" style="font-size: 4rem;">🥚</div>
+                    <h3>XL - Extra Grande</h3>
+                    <p>Sobre 68 gramos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla 3: Identificación del Producto -->
+    <div id="screen-product-info" class="screen">
+        <div class="header">
+            <button class="btn-back" onclick="goToScreen('screen-egg-type')">← Volver</button>
+            <h2>Datos del producto</h2>
+            <div class="progress-bar">
+                <div class="progress" style="width: 33%"></div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p class="info-text">Esta información está en el envase de tus huevos</p>
+            
+            <div class="form-group">
+                <label for="lote">Código de lote (opcional)</label>
+                <input type="text" id="lote" placeholder="Ej: L2024-001">
+                <small>Generalmente está impreso en la tapa o lateral</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="fecha-venc">Fecha de vencimiento (opcional)</label>
+                <input type="date" id="fecha-venc">
+            </div>
+            
+            <div class="form-group">
+                <label for="lugar-compra">¿Dónde compraste los huevos?</label>
+                <select id="lugar-compra" required>
+                    <option value="">Selecciona...</option>
+                    <option value="supermercado">Supermercado</option>
+                    <option value="feria">Feria local</option>
+                    <option value="tienda">Tienda de barrio</option>
+                    <option value="directa">Directo del productor</option>
+                    <option value="online">Compra online</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            
+            <button class="btn-primary" onclick="goToScreen('screen-problem-type')">Continuar</button>
+        </div>
+    </div>
+
+    <!-- Pantalla 4: Tipo de Problema -->
+    <div id="screen-problem-type" class="screen">
+        <div class="header">
+            <button class="btn-back" onclick="goToScreen('screen-product-info')">← Volver</button>
+            <h2>¿Cuál es el problema?</h2>
+            <div class="progress-bar">
+                <div class="progress" style="width: 50%"></div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p class="info-text">Selecciona la categoría que mejor describe tu problema</p>
+            
+            <div class="problem-types">
+                <div class="problem-card" onclick="selectProblem('cascara')">
+                    <div class="problem-icon">🔨</div>
+                    <h3>Problema de cáscara</h3>
+                    <p>Fisuras, roturas, suciedad, deformaciones</p>
+                </div>
+                
+                <div class="problem-card" onclick="selectProblem('clara')">
+                    <div class="problem-icon">💧</div>
+                    <h3>Problema de clara</h3>
+                    <p>Acuosa, con sangre, turbia, olor</p>
+                </div>
+                
+                <div class="problem-card" onclick="selectProblem('yema')">
+                    <div class="problem-icon">🌕</div>
+                    <h3>Problema de yema</h3>
+                    <p>Doble yema, manchas, color anormal, rotura</p>
+                </div>
+                
+                <div class="problem-card" onclick="selectProblem('frescura')">
+                    <div class="problem-icon">⏰</div>
+                    <h3>Problema de frescura</h3>
+                    <p>Olor, deterioro, fecha</p>
+                </div>
+                
+                <div class="problem-card" onclick="selectProblem('cuerpo-extrano')">
+                    <div class="problem-icon">⚠️</div>
+                    <h3>Cuerpo extraño</h3>
+                    <p>Objeto o elemento no deseado</p>
+                </div>
+                
+                <div class="problem-card" onclick="selectProblem('otro')">
+                    <div class="problem-icon">📝</div>
+                    <h3>Otro problema</h3>
+                    <p>Describiré mi situación</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla 5: Descripción y Foto -->
+    <div id="screen-details" class="screen">
+        <div class="header">
+            <button class="btn-back" onclick="goToScreen('screen-problem-type')">← Volver</button>
+            <h2>Cuéntanos más</h2>
+            <div class="progress-bar">
+                <div class="progress" style="width: 66%"></div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="form-group">
+                <label for="descripcion">Describe el problema</label>
+                <textarea id="descripcion" rows="4" placeholder="Cuéntanos qué pasó con los huevos..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Agregar foto (opcional pero recomendado)</label>
+                <div class="photo-upload">
+                    <input type="file" id="foto" accept="image/*" capture="environment" onchange="previewPhoto(this)">
+                    <label for="foto" class="upload-label">
+                        <span id="upload-text">📷 Tomar o seleccionar foto</span>
+                    </label>
+                    <div id="photo-preview" class="photo-preview"></div>
+                </div>
+                <small>La foto nos ayuda a resolver tu reclamo más rápido</small>
+            </div>
+            
+            <button class="btn-primary" onclick="goToScreen('screen-contact')">Continuar</button>
+        </div>
+    </div>
+
+    <!-- Pantalla 6: Datos de Contacto -->
+    <div id="screen-contact" class="screen">
+        <div class="header">
+            <button class="btn-back" onclick="goToScreen('screen-details')">← Volver</button>
+            <h2>Tus datos de contacto</h2>
+            <div class="progress-bar">
+                <div class="progress" style="width: 83%"></div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p class="info-text">Para poder responderte y resolver tu reclamo</p>
+            
+            <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" required placeholder="Ej: Juan Pérez">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" required placeholder="tu@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="telefono">Teléfono *</label>
+                <input type="tel" id="telefono" required placeholder="+56 9 1234 5678">
+            </div>
+            
+            <div class="form-group">
+                <label for="comuna">Comuna</label>
+                <input type="text" id="comuna" placeholder="Ej: Valdivia">
+            </div>
+            
+            <button class="btn-primary" onclick="submitComplaint()" id="btn-submit">
+                <span id="submit-text">Enviar reclamo</span>
+                <span id="submit-loading" style="display: none;">Enviando...</span>
+            </button>
+            
+            <p class="privacy-notice">Tus datos serán usados solo para gestionar este reclamo</p>
+        </div>
+    </div>
+
+    <!-- Pantalla 7: Confirmación -->
+    <div id="screen-confirmation" class="screen">
+        <div class="header">
+            <h2>¡Reclamo recibido!</h2>
+        </div>
+        
+        <div class="content confirmation-content">
+            <div class="success-icon">✓</div>
+            <h3>Gracias por contactarnos</h3>
+            <p>Tu reclamo ha sido registrado exitosamente.</p>
+            
+            <div class="complaint-number">
+                <p>Número de reclamo:</p>
+                <h2 id="numero-reclamo">---</h2>
+            </div>
+            
+            <div class="next-steps">
+                <h4>¿Qué sigue?</h4>
+                <ul>
+                    <li>Revisaremos tu caso en las próximas 24-48 horas</li>
+                    <li>Te contactaremos al email o teléfono que proporcionaste</li>
+                    <li>Te daremos una solución acorde a tu situación</li>
+                </ul>
+            </div>
+            
+            <button class="btn-primary" onclick="location.reload()">Hacer otro reclamo</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
